@@ -162,6 +162,7 @@ void QBot::clearOled(){
 		analogWrite(MOTOR1_A, abs(speed));
 		digitalWrite(MOTOR1_B, LOW);
 	}
+  }
   
   void QBot::motor2(int speed   /* -255 : 255*/){
 	if(speed >= 0){
@@ -177,7 +178,6 @@ void QBot::clearOled(){
 	}
 }
 
-}
 void QBot::stop(){
   pinMode(MOTOR1_A, INPUT);
   pinMode(MOTOR1_B, INPUT);
