@@ -40,12 +40,6 @@ qBot functions:
 	void clearOled();				// empty the OLED screen
 
 // Motor control functions, fairly self-explanatory
-	void forward();
-	void reverse();
-	void turnRight();
-	void turnLeft();
+	void motor1(int speed /*-255 : 255*/); 			// control the two motors individually, by changing the sign of the speed variable you change the motor direction.
+	void motor2(int speed /*-255 : 255*/);
 	void stop();
-	void forward(int speed /*0-255*/);  // motor control with speed control
-	void reverse(int speed /*0-255*/);
-	void turnRight(int speed /*0-255*/);
-	void turnLeft(int speed /*0-255*/);

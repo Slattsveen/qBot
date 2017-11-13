@@ -28,15 +28,9 @@ class QBot{
 	void clearOled();
 	
 		// Motor control functions
-	void forward();
-	void reverse();
-	void turnRight();
-	void turnLeft();
 	void stop();
-	void forward(int speed);  // motor control with speed control
-	void reverse(int speed);
-	void turnRight(int speed);
-	void turnLeft(int speed);
+	void motor1(int speed);  // motor control with speed control, int sign defines direction
+	void motor2(int speed);
 	
 	// Variables
 		// Sensor storage
@@ -48,6 +42,14 @@ class QBot{
 	unsigned short gx, gy, gz;	// gyroscope values
 	unsigned short distVal = 300;
 
+	// Sensor pins
+	const char reflSens[3] = {A2, A3, A4};
+	const char lightSens = A0;
+	const char reedSens = A1;
+	const char buttons[2] = {0, 1};
+		// Output pins
+	#define LED1 9 
+	#define LED2 13 
 	
 	private:
 	
@@ -57,13 +59,7 @@ class QBot{
 	#define ECHO_PIN 7
 	#define MAX_DIST 300   //value for distance sensor setup
 	
-	const char reflSens[3] = {A2, A3, A4};
-	const char lightSens = A0;
-	const char reedSens = A1;
-	const char buttons[2] = {0, 1};
-		// Output pins
-	#define LED1 9 
-	#define LED2 13 
+	
 
 	#define MOTOR1_A 5  
 	#define MOTOR1_B 6

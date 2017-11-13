@@ -148,87 +148,35 @@ void QBot::clearOled(){
 	display.display();
 }
 
-// Motor functions
+// Motor functions, one function for each motor, changing the sign of the speed value changes the motor direction
 
-void QBot::forward(){
-  pinMode(MOTOR1_A, OUTPUT);
-  pinMode(MOTOR1_B, OUTPUT);
-  pinMode(MOTOR2_A, OUTPUT);
-  pinMode(MOTOR2_B, OUTPUT);
-  digitalWrite(MOTOR1_A, LOW);
-  digitalWrite(MOTOR1_B, HIGH);
-  digitalWrite(MOTOR2_A, LOW);
-  digitalWrite(MOTOR2_B, HIGH);
+  void QBot::motor1(int speed   /* -255 : 255*/){
+	if(speed >= 0){
+		pinMode(MOTOR1_A, OUTPUT);
+		pinMode(MOTOR1_B, OUTPUT);
+		digitalWrite(MOTOR1_A, LOW);
+		analogWrite(MOTOR1_B, abs(speed));
+	}else{
+		pinMode(MOTOR1_A, OUTPUT);
+		pinMode(MOTOR1_B, OUTPUT);
+		analogWrite(MOTOR1_A, abs(speed));
+		digitalWrite(MOTOR1_B, LOW);
+	}
+  
+  void QBot::motor2(int speed   /* -255 : 255*/){
+	if(speed >= 0){
+		pinMode(MOTOR2_A, OUTPUT);
+		pinMode(MOTOR2_B, OUTPUT);
+		digitalWrite(MOTOR2_A, LOW);
+		analogWrite(MOTOR2_B, abs(speed));
+	}else{
+		pinMode(MOTOR2_A, OUTPUT);
+		pinMode(MOTOR2_B, OUTPUT);
+		analogWrite(MOTOR2_A, abs(speed));
+		digitalWrite(MOTOR2_B, LOW);
+	}
 }
-void QBot::forward(int speed){
-  pinMode(MOTOR1_A, OUTPUT);
-  pinMode(MOTOR1_B, OUTPUT);
-  pinMode(MOTOR2_A, OUTPUT);
-  pinMode(MOTOR2_B, OUTPUT);
-  digitalWrite(MOTOR1_A, LOW);
-  analogWrite(MOTOR1_B, speed);
-  digitalWrite(MOTOR2_A, LOW);
-  analogWrite(MOTOR2_B, speed);
-}
-void QBot::turnRight(){
-  pinMode(MOTOR1_A, INPUT);
-  pinMode(MOTOR1_B, INPUT);
-  pinMode(MOTOR2_A, OUTPUT);
-  pinMode(MOTOR2_B, OUTPUT);
-  digitalWrite(MOTOR1_A, LOW);
-  digitalWrite(MOTOR1_B, LOW);
-  digitalWrite(MOTOR2_A, LOW);
-  digitalWrite(MOTOR2_B, HIGH);
-}
-void QBot::turnRight(int speed){
-  pinMode(MOTOR1_A, INPUT);
-  pinMode(MOTOR1_B, INPUT);
-  pinMode(MOTOR2_A, OUTPUT);
-  pinMode(MOTOR2_B, OUTPUT);
-  digitalWrite(MOTOR1_A, LOW);
-  digitalWrite(MOTOR1_B, LOW);
-  digitalWrite(MOTOR2_A, LOW);
-  analogWrite(MOTOR2_B, speed);
-}
-void QBot::turnLeft(){
-  pinMode(MOTOR1_A, OUTPUT);
-  pinMode(MOTOR1_B, OUTPUT);
-  pinMode(MOTOR2_A, INPUT);
-  pinMode(MOTOR2_B, INPUT);
-  digitalWrite(MOTOR1_A, LOW);
-  digitalWrite(MOTOR1_B, HIGH);
-  digitalWrite(MOTOR2_A, LOW);
-  digitalWrite(MOTOR2_B, LOW);
-}
-void QBot::turnLeft(int speed){
-  pinMode(MOTOR1_A, OUTPUT);
-  pinMode(MOTOR1_B, OUTPUT);
-  pinMode(MOTOR2_A, INPUT);
-  pinMode(MOTOR2_B, INPUT);
-  digitalWrite(MOTOR1_A, LOW);
-  analogWrite(MOTOR1_B, speed);
-  digitalWrite(MOTOR2_A, LOW);
-  digitalWrite(MOTOR2_B, LOW);
-}
-void QBot::reverse(){
-  pinMode(MOTOR1_A, OUTPUT);
-  pinMode(MOTOR1_B, OUTPUT);
-  pinMode(MOTOR2_A, OUTPUT);
-  pinMode(MOTOR2_B, OUTPUT);
-  digitalWrite(MOTOR1_A, HIGH);
-  digitalWrite(MOTOR1_B, LOW);
-  digitalWrite(MOTOR2_A, HIGH);
-  digitalWrite(MOTOR2_B, LOW);
-}
-void QBot::reverse(int speed){
-  pinMode(MOTOR1_A, OUTPUT);
-  pinMode(MOTOR1_B, OUTPUT);
-  pinMode(MOTOR2_A, OUTPUT);
-  pinMode(MOTOR2_B, OUTPUT);
-  analogWrite(MOTOR1_A, speed);
-  digitalWrite(MOTOR1_B, LOW);
-  analogWrite(MOTOR2_A, speed);
-  digitalWrite(MOTOR2_B, LOW);
+
 }
 void QBot::stop(){
   pinMode(MOTOR1_A, INPUT);
