@@ -1,6 +1,6 @@
 This is the qBot library, it contains pin allocations and some predefined functions to make the qBot - Arduino project work. 
 
-The qBot library requires the following libraries installed:
+The qBot library requires the following libraries installed, they are included in this zip-file. Make sure to move or copy the support libraries to the "libraries" directory:
 "Adafruit_GFX"		-	Library manager
 "Adafruit_SSD1306"	-	Library manager
 "I2Cdev"		-	Library manager?  possibly online, find link
@@ -42,4 +42,4 @@ qBot functions:
 // Motor control functions, fairly self-explanatory
 	void motor1(int speed /*-255 : 255*/); 			// control the two motors individually, by changing the sign of the speed variable you change the motor direction.
 	void motor2(int speed /*-255 : 255*/);
-	void stop();
+	void motorStop();
