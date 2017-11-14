@@ -59,7 +59,7 @@ void QBot::start(){  /////////////////  SETUP   ///////////////////////
   pinMode(MOTOR1_B, OUTPUT);
   pinMode(MOTOR2_A, OUTPUT);
   pinMode(MOTOR2_B, OUTPUT);
-  stop(); // make sure motors start OFF
+  motorStop(); // make sure motors start OFF
   
 
   pinMode(LED1, OUTPUT);
@@ -91,7 +91,12 @@ void QBot::updateSensors(){
   lightVal = analogRead(lightSens);                   //Light sensor data
   reedVal = digitalRead(reedSens);                    //Reed-switch data
   for (int i = 0; i < 3; i++) {                       //IR-reflective sensors
-    reflVals[i] = digitalRead(reflSens[i]);
+	unsigned short val = analogRead(reflSens[i]);
+	if(val < 800){ // threshold value of the reflection sensor is set at 800, white paper gives ~1000
+		reflVals[i] = 0;
+	} else {
+    reflVals[i] = 1;
+	}
   }
   for (int i = 0; i < 2; i++) {                       //Button States
     buttonVals[i] = digitalRead(buttons[i]);
@@ -100,7 +105,7 @@ void QBot::updateSensors(){
   //buttonVals[1] = button2Pressed;
   
   distVal = 0;
-  unsigned char numReadings = 2;
+  unsigned char numReadings = 1;
   for (int i = 0; i < numReadings; i++) {
     delay(30);
     distVal += sonar.ping()	/ US_ROUNDTRIP_CM;
@@ -132,13 +137,14 @@ void QBot::printSensors(){
   Serial.print(" : ");
   Serial.println(buttonVals[1]);
 
-  Serial.print("Accel/gyro: ");
+  Serial.println("Accel/gyro: ");
   Serial.print(ax); Serial.print("\t");
   Serial.print(ay); Serial.print("\t");
-  Serial.print(az); Serial.print(" | ");
+  Serial.print(az); Serial.println("  ");
   Serial.print(gx); Serial.print("\t");
   Serial.print(gy); Serial.print("\t");
   Serial.println(gz);
+  Serial.println(" ");
 }
 
 void QBot::oledWrite(int x, int y, String message){

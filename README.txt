@@ -29,6 +29,12 @@ qBot sensor variable names, all are updated by calling the "updateSensors()" fun
 	unsigned short gx, gy, gz;			// gyroscope values
 	unsigned short distVal;				// measurement from distance sensor in cm
 
+qBot sensor pin names, sensors can be read manually by calling for example analogRead(qBot.reflSens[0]):
+	const char reflSens[3];				// can be read digital or analog
+	const char lightSens;				// can be read digital or analog
+	const char reedSensA1;				// can be read digital or analog
+	const char buttons[2];				// Can be attached to interrupt 2 and 3
+
 
 qBot functions:
 
@@ -40,6 +46,7 @@ qBot functions:
 	void clearOled();				// empty the OLED screen
 
 // Motor control functions, fairly self-explanatory
+
 	void motor1(int speed /*-255 : 255*/); 			// control the two motors individually, by changing the sign of the speed variable you change the motor direction.
 	void motor2(int speed /*-255 : 255*/);
 	void motorStop();
