@@ -1,7 +1,9 @@
 /*
 	qBot library header file
 	Written by Kristoffer Slåttsveen
-	06.11.2017
+	14.11.2017
+	
+	Published under the GNU General Public License v3 of June 29 2007.
 */
 
 #ifndef qBot_h
@@ -28,7 +30,7 @@ class QBot{
 	void clearOled();
 	
 		// Motor control functions
-	void stop();
+	void motorStop();
 	void motor1(int speed);  // motor control with speed control, int sign defines direction
 	void motor2(int speed);
 	
@@ -57,8 +59,7 @@ class QBot{
 		// Sensor pins
 	#define TRIGGER_PIN 4
 	#define ECHO_PIN 7
-	#define MAX_DIST 300   //value for distance sensor setup
-	
+	#define MAX_DIST 300   //value for maximum distance sensor setup, all above will return 0
 	
 
 	#define MOTOR1_A 5  

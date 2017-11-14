@@ -1,5 +1,10 @@
 /*
 	qBot library cpp file, here all the good stuff takes place!
+	
+	Written by Kristoffer Slåttsveen
+	14.11.2017
+	
+	Published under the GNU General Public License v3 of June 29 2007.
 */
 
 #include "qbot.h"
@@ -178,7 +183,7 @@ void QBot::clearOled(){
 	}
 }
 
-void QBot::stop(){
+void QBot::motorStop(){
   pinMode(MOTOR1_A, INPUT);
   pinMode(MOTOR1_B, INPUT);
   pinMode(MOTOR2_A, INPUT);
