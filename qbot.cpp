@@ -114,7 +114,6 @@ void QBot::updateSensors(){
 }
 
 
-
 void QBot::printSensors(){
   Serial.print("Distance: ");
   Serial.println(distVal);
