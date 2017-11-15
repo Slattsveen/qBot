@@ -11,11 +11,9 @@
  * Published under the GNU General Public License v3 of June 29 2007.
  */
 
-#import <qbot.h>
 
-int xCoordinate = 5;
-int yCoordinate = 10;
-String message = "Hello, world!";
+
+#import <qbot.h>
 
 // Create an instance of the qBot class, name it whatever you like. I call it "bot".
 QBot bot;
@@ -23,13 +21,12 @@ QBot bot;
 void setup() {
   //Initialize the qBot object, this wil take care of all Arduino pin definitions
   bot.start();
+  bot.clearOled();
 }
 
 void loop() {
   //This is the loop, where most of the interesting stuff happens!
-
-  // call any qBot function by calling it through the object. "bot.<function>"
-  bot.oledWrite(xCoordinate, yCoordinate,message); 
+  bot.oledWrite(10, 10, "Hello, World!");
 }
 
 
